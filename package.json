@@ -1,8 +1,8 @@
 {
   "name": "@mil-rlib/reactjs-star-rating",
   "version": "1.0.0",
-  "description": "Made with create-react-library",
-  "author": "milayek86",
+  "description": "Simple Reactjs Star Rating component.",
+  "author": "Monowar Iqbal Layek",
   "license": "MIT",
   "repository": "milayek86/@mil-rlib/reactjs-star-rating",
   "main": "dist/index.js",
@@ -23,6 +23,12 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
+  "keywords": [
+    "reactjs-star-rating",
+    "star-ating",
+    "reactjs",
+    "react"
+  ],
   "peerDependencies": {
     "react": "^16.0.0"
   },
