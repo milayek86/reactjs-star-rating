@@ -1,6 +1,5 @@
 declare module '@mil-rlib/reactjs-star-rating' {
   import React from 'react'
-  import StarRating from './index.js'
 
   interface StarPropTypes {
     onClick: () => {}
@@ -13,6 +12,6 @@ declare module '@mil-rlib/reactjs-star-rating' {
     inActiveStarStyle: Object
   }
 
-  declare const StarRating: React.FC<StarPropTypes>
+  const StarRating: React.FC<StarPropTypes>
   export default StarRating
 }
