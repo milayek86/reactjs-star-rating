@@ -8,7 +8,7 @@
 npm install --save @mil-rlib/reactjs-star-rating
 ```
 
-![Demo](https://milayek86.github.io/reactjs-star-rating)
+[Demo](https://milayek86.github.io/reactjs-star-rating)
 
 ## Usage
 
