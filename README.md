@@ -13,15 +13,21 @@ npm install --save @mil-rlib/reactjs-star-rating
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
+import StarRating from '@mil-rlib/reactjs-star-rating'
 
-import MyComponent from '@mil-rlib/reactjs-star-rating'
-import '@mil-rlib/reactjs-star-rating/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const App = () => {
+  return (
+    <StarRating
+      activeStars={2}
+      totalStars={10}
+      starStyle={{ fontSize: 40, color: 'red' }}
+      containerStyle={{ border: 'solid' }}
+      direction={'horizontal'} //vertical/horizontal
+      activeStarStyle={{ color: 'green' }}
+      inActiveStarStyle={{ color: 'gray' }}
+    />
+  )
 }
 ```
 
