@@ -10,6 +10,7 @@ declare module '@mil-rlib/reactjs-star-rating' {
     starStyle: Object
     activeStarStyle: Object
     inActiveStarStyle: Object
+    disabled: boolean
   }
 
   const StarRating: React.FC<StarPropTypes>

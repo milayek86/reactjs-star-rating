@@ -24,10 +24,14 @@
     "deploy": "gh-pages -d example/build"
   },
   "keywords": [
+    "rating",
+    "star",
+    "reactjs-star",
     "reactjs-star-rating",
-    "star-ating",
+    "react star rating",
     "reactjs",
-    "react"
+    "component",
+    "front-end"
   ],
   "peerDependencies": {
     "react": "^16.0.0"
@@ -55,6 +59,8 @@
     "react-scripts": "^3.4.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/index.d.ts",
+    "src/index.js"
   ]
 }

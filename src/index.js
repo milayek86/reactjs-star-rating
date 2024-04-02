@@ -13,7 +13,8 @@ const StarRating = ({
   starStyle,
   direction,
   activeStarStyle,
-  inActiveStarStyle
+  inActiveStarStyle,
+  disabled
 }) => {
   const ts = totalStars > 0 ? totalStars : defaultStarCount
 
@@ -36,6 +37,15 @@ const StarRating = ({
           userSelect: 'none',
           flexDirection: direction === 'horizontal' ? 'row' : 'column'
         }}
+        {...(!disabled
+          ? {
+              onClick: (e) =>
+                onClickStar(+e.target.getAttribute('data-count') + 1),
+              onMouseOver: (e) =>
+                setOnHoverActiveStars(+e.target.getAttribute('data-count') + 1),
+              onMouseOut: (e) => setOnHoverActiveStars(0)
+            }
+          : {})}
       >
         {Array(ts)
           .fill('')
@@ -43,20 +53,15 @@ const StarRating = ({
             const isActive =
               (onHoverActiveStars > 0 && i + 1 <= onHoverActiveStars) ||
               (onHoverActiveStars === 0 && i + 1 <= totalActiveStars)
+
             return (
               <span
                 key={i}
+                data-count={i}
                 style={{
                   fontSize: 25,
                   ...starStyle,
                   ...(isActive ? activeStarStyle : inActiveStarStyle)
-                }}
-                onClick={() => onClickStar(i + 1)}
-                onMouseOver={() => {
-                  setOnHoverActiveStars(i + 1)
-                }}
-                onMouseOut={() => {
-                  setOnHoverActiveStars(0)
                 }}
               >
                 {isActive ? starFilled : starOutling}
@@ -76,7 +81,8 @@ StarRating.propTypes = {
   containerStyle: PropTypes.object,
   starStyle: PropTypes.object,
   activeStarStyle: PropTypes.object,
-  inActiveStarStyle: PropTypes.object
+  inActiveStarStyle: PropTypes.object,
+  disabled: PropTypes.bool
 }
 
 StarRating.defaultProps = {
@@ -87,6 +93,7 @@ StarRating.defaultProps = {
   containerStyle: {},
   starStyle: {},
   activeStarStyle: {},
-  inActiveStarStyle: {}
+  inActiveStarStyle: {},
+  disabled: false
 }
 export default StarRating
