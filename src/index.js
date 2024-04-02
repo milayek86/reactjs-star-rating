@@ -33,7 +33,7 @@ const StarRating = ({
       <div
         style={{
           display: 'flex',
-          cursor: 'pointer',
+          cursor: !disabled ? 'pointer' : 'default',
           userSelect: 'none',
           flexDirection: direction === 'horizontal' ? 'row' : 'column'
         }}

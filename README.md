@@ -33,13 +33,32 @@ yarn add @mil-rlib/reactjs-star-rating
 
 ## Usage
 
+### Basic Usage
+
+```jsx
+import React from 'react'
+import StarRating from '@mil-rlib/reactjs-star-rating'
+
+const BasicExample = () => {
+  const handleStarClick = (clickedIndex) => {
+    console.log('Clicked star index:', clickedIndex)
+  }
+
+  return <StarRating activeStars={3} totalStars={5} onClick={handleStarClick} />
+}
+
+export default BasicExample
+```
+
+### Customization
+
 ```jsx
 import React, { useState } from 'react'
 import StarRating from '@mil-rlib/reactjs-star-rating'
 
 const App = () => {
   const [activeStars, setActiveStars] = useState(0)
-  const getStarCount = (count) => {
+  const handleStarClick = (count) => {
     setActiveStars(count)
   }
 
@@ -52,11 +71,33 @@ const App = () => {
       direction={'horizontal'} //vertical/horizontal
       activeStarStyle={{ color: 'green' }}
       inActiveStarStyle={{ color: 'gray' }}
-      onClick={getStarCount}
+      onClick={handleStarClick}
       disabled={true}
     />
   )
 }
+```
+
+### Disabled Rating
+
+```jsx
+import React from 'react'
+import StarRating from '@mil-rlib/reactjs-star-rating'
+
+const DisabledExample = () => {
+  return (
+    <StarRating
+      activeStars={4}
+      totalStars={5}
+      onClick={(clickedCount) =>
+        console.log('Clicked star count:', clickedCount)
+      }
+      disabled
+    />
+  )
+}
+
+export default DisabledExample
 ```
 
 ## Props
