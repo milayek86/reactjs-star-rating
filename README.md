@@ -19,7 +19,6 @@ React.js Star Rating is a professional-grade component tailored for React.js app
 
 [Demo Link](https://milayek86.github.io/reactjs-star-rating)
 
-
 ## Install
 
 ```bash
@@ -31,8 +30,6 @@ OR
 ```bash
 yarn add @mil-rlib/reactjs-star-rating
 ```
-
-
 
 ## Usage
 
@@ -62,11 +59,25 @@ const App = () => {
 }
 ```
 
+## Props
+
+| Prop              | Type     | Default | Description                                      |
+| ----------------- | -------- | ------- | ------------------------------------------------ |
+| activeStars       | number   |         | Number of active stars.                          |
+| totalStars        | number   |         | Total number of stars to display.                |
+| starStyle         | object   |         | CSS styles for the stars.                        |
+| containerStyle    | object   |         | CSS styles for the container.                    |
+| direction         | string   |         | Layout direction of stars (vertical/horizontal). |
+| activeStarStyle   | object   |         | CSS styles for active stars.                     |
+| inActiveStarStyle | object   |         | CSS styles for inactive stars.                   |
+| onClick           | function |         | Callback function triggered on click.            |
+| disabled          | boolean  | false   | Disables the star rating component.              |
+
 ## License
 
- This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\
  MIT © [milayek86](https://github.com/milayek86)
 
-
 ## Issues
+
 If you find any issues or have suggestions, please open an issue [here](https://github.com/milayek86/reactjs-star-rating/issues).
