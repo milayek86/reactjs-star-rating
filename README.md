@@ -19,7 +19,7 @@ React.js Star Rating is a professional-grade component tailored for React.js app
 
 https://github.com/milayek86/reactjs-star-rating/assets/38817202/fbea66ed-26a9-4ba0-8445-56bbd3f98f0d
 
-![react-star-rating](https://github.com/milayek86/reactjs-star-rating/static/react-star-rating.gif)
+![react-star-rating](https://github.com/milayek86/reactjs-star-rating/blob/main/static/react-star-rating.gif)
 
 [Demo Link](https://milayek86.github.io/reactjs-star-rating)
 
