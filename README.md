@@ -17,14 +17,9 @@ React.js Star Rating is a professional-grade component tailored for React.js app
 
 ## Demo
 
-
 https://github.com/milayek86/reactjs-star-rating/assets/38817202/fbea66ed-26a9-4ba0-8445-56bbd3f98f0d
 
-
-![react-star-rating](https://github.com/milayek86/reactjs-star-rating/assets/38817202/513e35cf-34a9-430d-b688-b437fc6a4711)
-
-
-
+![react-star-rating](https://github.com/milayek86/reactjs-star-rating/static/react-star-rating.gif)
 
 [Demo Link](https://milayek86.github.io/reactjs-star-rating)
 
@@ -49,8 +44,8 @@ import React from 'react'
 import StarRating from '@mil-rlib/reactjs-star-rating'
 
 const BasicExample = () => {
-  const handleStarClick = (clickedIndex) => {
-    console.log('Clicked star index:', clickedIndex)
+  const handleStarClick = (starCount) => {
+    console.log('Clicked star index:', starCount)
   }
 
   return <StarRating activeStars={3} totalStars={5} onClick={handleStarClick} />
@@ -67,8 +62,8 @@ import StarRating from '@mil-rlib/reactjs-star-rating'
 
 const App = () => {
   const [activeStars, setActiveStars] = useState(0)
-  const handleStarClick = (count) => {
-    setActiveStars(count)
+  const handleStarClick = (starCount) => {
+    setActiveStars(starCount)
   }
 
   return (
@@ -98,9 +93,7 @@ const DisabledExample = () => {
     <StarRating
       activeStars={4}
       totalStars={5}
-      onClick={(clickedCount) =>
-        console.log('Clicked star count:', clickedCount)
-      }
+      onClick={(starCount) => console.log('Clicked star count:', starCount)}
       disabled
     />
   )
