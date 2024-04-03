@@ -5,15 +5,30 @@
   "author": "Monowar Iqbal Layek",
   "license": "MIT",
   "repository": "milayek86/reactjs-star-rating",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
   "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "./src/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist/index.js",
+    "dist/index.js.map",
+    "src/index.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "engines": {
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --compress",
+    "build:npm": "microbundle-crl --compress",
+    "start": "microbundle-crl watch --compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -57,10 +72,5 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1"
-  },
-  "files": [
-    "dist",
-    "src/index.d.ts",
-    "src/index.js"
-  ]
+  }
 }
