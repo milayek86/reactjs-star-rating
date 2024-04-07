@@ -1,18 +1,17 @@
 declare module '@mil-rlib/reactjs-star-rating' {
-  import React from 'react'
-
-  interface StarPropTypes {
-    onClick: () => {}
-    direction: String // vertical/horizontal
-    totalStars: Number
-    activeStars: Number
-    containerStyle: Object
-    starStyle: Object
-    activeStarStyle: Object
-    inActiveStarStyle: Object
-    disabled: boolean
+  import React, { CSSProperties } from 'react';
+   interface StarRatingProps {
+    totalStars: number;
+    onClick?: (count: number) => void;
+    direction?: 'horizontal' | 'vertical';
+    activeStars?: number;
+    containerStyle?: CSSProperties;
+    starStyle?: CSSProperties;
+    activeStarStyle?: CSSProperties;
+    inActiveStarStyle?: CSSProperties;
+    disabled?: boolean;
   }
-
-  const StarRating: React.FC<StarPropTypes>
-  export default StarRating
+  
+  const StarRating: React.FC<StarRatingProps>;
+  export default StarRating;
 }
