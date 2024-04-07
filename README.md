@@ -104,17 +104,21 @@ export default DisabledExample
 
 ## Props
 
-| Prop              | Type     | Default | Description                                      |
-| ----------------- | -------- | ------- | ------------------------------------------------ |
-| activeStars       | number   |         | Number of active stars.                          |
-| totalStars        | number   |         | Total number of stars to display.                |
-| starStyle         | object   |         | CSS styles for the stars.                        |
-| containerStyle    | object   |         | CSS styles for the container.                    |
-| direction         | string   |         | Layout direction of stars (vertical/horizontal). |
-| activeStarStyle   | object   |         | CSS styles for active stars.                     |
-| inActiveStarStyle | object   |         | CSS styles for inactive stars.                   |
-| onClick           | function |         | Callback function triggered on click.            |
-| disabled          | boolean  | false   | Disables the star rating component.              |
+## Props
+
+| Name             | Type                            | Default | Required | Description                                                                                      |
+|------------------|---------------------------------|---------|----------|--------------------------------------------------------------------------------------------------|
+| `onClick`        | `(count: number) => void`      | `() => {}` | No       | Callback function invoked when a star is clicked. Receives the count of the clicked star as an argument. |
+| `direction`      | `string (horizontal / vertical)`| `horizontal` | No       | Specifies the direction of the star rating display.                                                |
+| `totalStars`     | `number`                        | `5`       | Yes      | The total number of stars to be displayed in the rating component.                                 |
+| `activeStars`    | `number`                        | `0`       | No       | The number of active stars initially selected or highlighted.                                       |
+| `containerStyle` | `CSSProperties`                 | `{}`      | No       | Additional CSS styles to apply to the container of the star rating component.                       |
+| `starStyle`      | `CSSProperties`                 | `{}`      | No       | Additional CSS styles to apply to each individual star element.                                      |
+| `activeStarStyle`| `CSSProperties`                 | `{}`      | No       | Additional CSS styles to apply to active (filled) stars.                                             |
+| `inActiveStarStyle` | `CSSProperties`              | `{}`      | No       | Additional CSS styles to apply to inactive (empty) stars.                                            |
+| `disabled`       | `boolean`                       | `false`   | No       | Disables the star rating component when set to `true`, preventing interaction with the stars.     |
+
+
 
 ## License
 
