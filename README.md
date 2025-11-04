@@ -7,6 +7,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/npm/dm/@mil-rlib/reactjs-star-rating.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
 
+🔗 **[View Live Demo & Examples](https://milayek86.github.io/reactjs-star-rating/)** - Interactive playground showcasing all features
+
 ## Why Choose This Component?
 
 ✨ **Ultra-Performance** - Only 889 bytes brotli compressed, 75% smaller than alternatives  
