@@ -2,10 +2,13 @@
 
 🌟 **Ultra-lightweight React Star Rating Component** - Professional-grade rating system with half-star precision, zero dependencies, and **889 bytes brotli** compressed!
 
-[![NPM](https://img.shields.io/npm/v/@mil-rlib/reactjs-star-rating.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
+[![NPM Version](https://img.shields.io/npm/v/@mil-rlib/reactjs-star-rating.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
 [![Bundle Size](https://img.shields.io/badge/bundle%20size-889B%20brotli-brightgreen)](https://bundlephobia.com/package/@mil-rlib/reactjs-star-rating)
+[![NPM Downloads](https://img.shields.io/npm/dm/@mil-rlib/reactjs-star-rating.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
+[![GitHub Stars](https://img.shields.io/github/stars/milayek86/reactjs-star-rating.svg)](https://github.com/milayek86/reactjs-star-rating/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/npm/dm/@mil-rlib/reactjs-star-rating.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-0-green.svg)](https://www.npmjs.com/package/@mil-rlib/reactjs-star-rating)
 
 🔗 **[View Live Demo & Examples](https://milayek86.github.io/reactjs-star-rating/)** - Interactive playground showcasing all features
 
