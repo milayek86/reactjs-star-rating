@@ -1,79 +1,141 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useCallback, useMemo } from 'react'
 
-const defaultStarCount = 5
+const StarRating = ({
+  onClick = () => {},
+  totalStars = 5,
+  activeStars = 0,
+  allowHalf = false,
+  precision = 1,
+  disabled = false,
+  readOnly = false,
+  animate = false,
+  direction = 'horizontal',
+  containerStyle = {},
+  starStyle = {},
+  activeStarStyle = {},
+  inActiveStarStyle = {},
+  clearable = false,
+  onClear
+}) => {
+  const [hoveredValue, setHoveredValue] = useState(0)
 
-const StarRating = React.memo(
-  ({
-    onClick = () => {},
-    totalStars = defaultStarCount,
-    activeStars = 0,
-    containerStyle = {},
-    starStyle = {},
-    direction = 'horizontal',
-    activeStarStyle = {},
-    inActiveStarStyle = {},
-    disabled = false
-  }) => {
-    const [hoveredStars, setHoveredStars] = useState(0)
+  // Current rating calculation
+  const currentRating = hoveredValue || activeStars
+  const step = allowHalf && precision <= 0.5 ? 0.5 : 1
 
-    const handleStarClick = (count) => {
-      if (!disabled) {
-        onClick(count)
+  const handleStarEvent = useCallback(
+    (e, index, isClick = false) => {
+      if (disabled || readOnly) return
+
+      const starValue = index + 1
+      let value = starValue
+
+      // Half-star calculation for precise positioning
+      if (allowHalf && precision <= 0.5) {
+        const rect = e.currentTarget.getBoundingClientRect()
+        const isLeftHalf = e.clientX - rect.left < rect.width / 2
+        value = isLeftHalf ? starValue - 0.5 : starValue
       }
+
+      if (isClick) {
+        // Clear functionality
+        if (clearable && value === activeStars) {
+          onClear ? onClear() : onClick(0)
+          return
+        }
+        onClick(value)
+      } else {
+        setHoveredValue(value)
+      }
+    },
+    [
+      disabled,
+      readOnly,
+      allowHalf,
+      precision,
+      clearable,
+      activeStars,
+      onClick,
+      onClear
+    ]
+  )
+
+  const handleMouseLeave = useCallback(() => setHoveredValue(0), [])
+
+
+
+  // Optimized styles
+  const containerStyles = useMemo(
+    () => ({
+      display: 'inline-flex',
+      flexDirection: direction === 'vertical' ? 'column' : 'row',
+      userSelect: 'none',
+      outline: 'none',
+      ...containerStyle
+    }),
+    [direction, containerStyle]
+  )
+
+  const baseStarStyles = useMemo(
+    () => ({
+      position: 'relative',
+      display: 'inline-block',
+      fontSize: 24,
+      lineHeight: 1,
+      cursor: disabled ? 'default' : 'pointer',
+      color: '#ddd',
+      transition: animate ? 'transform 0.1s ease' : 'none',
+      ...starStyle,
+      ...inActiveStarStyle
+    }),
+    [disabled, animate, starStyle, inActiveStarStyle]
+  )
+
+  // Render optimized stars
+  const renderStar = (index) => {
+    const starValue = index + 1
+    const fillValue = Math.max(0, Math.min(starValue, currentRating))
+    const fillPercentage = Math.round(
+      Math.max(0, Math.min(100, (fillValue - index) * 100))
+    )
+
+    const activeStyles = {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: `${fillPercentage}%`,
+      overflow: 'hidden',
+      color: '#ffc107',
+      ...activeStarStyle
     }
 
-    const handleMouseOver = (count) => !disabled && setHoveredStars(count)
-    const handleMouseOut = () => setHoveredStars(0)
+    const starAnimateStyle =
+      animate && fillPercentage > 0 ? { transform: 'scale(1.05)' } : {}
 
     return (
-      <div style={{ width: 'fit-content', margin: 1, ...containerStyle }}>
-        <div
-          style={{
-            display: 'flex',
-            userSelect: 'none',
-            flexDirection: direction === 'horizontal' ? 'row' : 'column',
-            cursor: disabled ? 'default' : 'pointer'
-          }}
-          onMouseOut={handleMouseOut}
-        >
-          {Array.from({ length: totalStars }, (_, i) => {
-            const starCount = i + 1
-            const isActive = (hoveredStars || activeStars) >= starCount
-            const starStyles = {
-              fontSize: 25,
-              ...starStyle,
-              ...(isActive ? activeStarStyle : inActiveStarStyle)
-            }
-
-            return (
-              <span
-                key={i}
-                style={starStyles}
-                onClick={() => handleStarClick(starCount)}
-                onMouseOver={() => handleMouseOver(starCount)}
-                data-count={i}
-              >
-                {isActive ? '\u2605' : '\u2606'}
-              </span>
-            )
-          })}
-        </div>
-      </div>
+      <span
+        key={index}
+        style={{ ...baseStarStyles, ...starAnimateStyle }}
+        onClick={(e) => handleStarEvent(e, index, true)}
+        onMouseMove={(e) => handleStarEvent(e, index)}
+        role='button'
+        aria-label={`${starValue} star${starValue !== 1 ? 's' : ''}`}
+      >
+        ★{fillPercentage > 0 && <span style={activeStyles}>★</span>}
+      </span>
     )
   }
-)
 
-StarRating.propTypes = {
-  onClick: PropTypes.func,
-  totalStars: PropTypes.number.isRequired,
-  activeStars: PropTypes.number,
-  containerStyle: PropTypes.object,
-  starStyle: PropTypes.object,
-  activeStarStyle: PropTypes.object,
-  inActiveStarStyle: PropTypes.object,
-  direction: PropTypes.string,
-  disabled: PropTypes.bool
+  return (
+    <div
+      style={containerStyles}
+      onMouseLeave={handleMouseLeave}
+      role='radiogroup'
+      aria-label={`Star rating: ${activeStars} out of ${totalStars} stars`}
+    >
+      {Array.from({ length: totalStars }, (_, i) => renderStar(i))}
+    </div>
+  )
 }
 
 export default StarRating

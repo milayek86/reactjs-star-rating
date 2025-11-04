@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --compress",
-    "build:npm": "microbundle-crl --compress",
+    "build:npm": "microbundle-crl --compress", 
     "start": "microbundle-crl watch --compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -85,5 +85,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "dependencies": {}
 }
