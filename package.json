@@ -1,10 +1,12 @@
 {
   "name": "@mil-rlib/reactjs-star-rating",
-  "version": "1.0.8",
-  "description": "Simple Reactjs Star Rating component.",
+  "version": "2.0.0",
+  "description": "Ultra-lightweight React Star Rating - 889B brotli, half-star precision, zero dependencies",
   "author": "Monowar Iqbal Layek",
   "license": "MIT",
   "repository": "milayek86/reactjs-star-rating",
+  "homepage": "https://milayek86.github.io/reactjs-star-rating/",
+  "bugs": "https://github.com/milayek86/reactjs-star-rating/issues",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -27,7 +29,7 @@
   },
   "scripts": {
     "build": "microbundle-crl --compress",
-    "build:npm": "microbundle-crl --compress",
+    "build:npm": "microbundle-crl --compress", 
     "start": "microbundle-crl watch --compress",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
@@ -39,14 +41,20 @@
     "deploy": "gh-pages -d example/build"
   },
   "keywords": [
-    "rating",
-    "star",
-    "reactjs-star",
-    "reactjs-star-rating",
-    "react star rating",
+    "react-star-rating",
+    "half-star",
+    "star-rating",
+    "lightweight",
+    "performance",
+    "accessibility",
+    "typescript",
+    "zero-dependencies",
     "reactjs",
     "component",
-    "front-end"
+    "rating",
+    "stars",
+    "ui-component",
+    "frontend"
   ],
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
@@ -85,5 +93,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "dependencies": {}
 }
