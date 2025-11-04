@@ -5,6 +5,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -52,8 +57,8 @@ jobs:
         git clone https://github.com/milayek86/reactjs-star-rating.git gh-pages-deploy
         cd gh-pages-deploy
         
-        # Configure remote with token
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/milayek86/reactjs-star-rating.git
+        # Configure remote with token (different format for GitHub Actions)
+        git remote set-url origin https://github-actions:${{ secrets.GITHUB_TOKEN }}@github.com/milayek86/reactjs-star-rating.git
         
         # Create or checkout gh-pages branch
         git checkout gh-pages || git checkout --orphan gh-pages
