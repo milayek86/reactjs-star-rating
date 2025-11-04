@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    - name: Checkout code
+      run: |
+        git clone https://github.com/milayek86/reactjs-star-rating.git .
         
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'yarn'
+    - name: Setup Node.js and Yarn
+      run: |
+        curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+        sudo apt-get install -y nodejs
+        npm install -g yarn
         
     - name: Install dependencies
       run: yarn install --frozen-lockfile
@@ -41,10 +42,34 @@ jobs:
         echo "Build directory contents verified"
         
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./example/build
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        commit_message: 'Deploy from ${{ github.sha }}'
+      run: |
+        # Configure git
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Clone repository again for gh-pages
+        cd ..
+        git clone https://github.com/milayek86/reactjs-star-rating.git gh-pages-deploy
+        cd gh-pages-deploy
+        
+        # Configure remote with token
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/milayek86/reactjs-star-rating.git
+        
+        # Create or checkout gh-pages branch
+        git checkout gh-pages || git checkout --orphan gh-pages
+        
+        # Clear existing content
+        git rm -rf . 2>/dev/null || true
+        
+        # Copy build files
+        cp -r ../reactjs-star-rating/example/build/* . 2>/dev/null || cp -r ../reactjs-star-rating/example/build/. .
+        
+        # Create .nojekyll to bypass Jekyll processing
+        touch .nojekyll
+        
+        # Add all files
+        git add .
+        
+        # Commit and push (exit 0 if nothing to commit)
+        git commit -m "Deploy from ${{ github.sha }}" || exit 0
+        git push origin gh-pages
