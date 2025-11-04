@@ -21,7 +21,6 @@ const StarRating = ({
 
   // Current rating calculation
   const currentRating = hoveredValue || activeStars
-  const step = allowHalf && precision <= 0.5 ? 0.5 : 1
 
   const handleStarEvent = useCallback(
     (e, index, isClick = false) => {
@@ -61,8 +60,6 @@ const StarRating = ({
   )
 
   const handleMouseLeave = useCallback(() => setHoveredValue(0), [])
-
-
 
   // Optimized styles
   const containerStyles = useMemo(
